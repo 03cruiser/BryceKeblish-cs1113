@@ -1,0 +1,3 @@
+module boolTest
+
+import bool
