@@ -154,14 +154,14 @@ set_toString: (Serialize a) => set a -> String
 -- the specified (but not yet implemented) seq_eql.
 -- You do not need to implement this class instance
 -- any further in the code below.
-instance (eq a) => eq (set a) where
-  eql s1 s2 = set_eql s1 s2
+--instance (eq a) => eq (set a) where
+--eql s1 s2 = set_eql s1 s2
 
 
 -- Overloaded toString for sets, calls set_toString
 -- The same comment right above applies here, too
-instance (Serialize a) => Serialize (set a) where
-  toString s = set_toString s
+--instance (Serialize a) => Serialize (set a) where
+--toString s = set_toString s
 
 
 {-
@@ -311,7 +311,7 @@ set_exists p (mkSet l) = list.foldr or false (Map p l)
 -- else return none. We need to return an option because of course
 -- in general there might not be an element in s with property p.
 -- If there is one, we call it a "witness to the property, p."
--- set_witness: (p: a -> bool) -> (s: set a) -> option a
+--set_witness: (p: a -> bool) -> (s: set a) -> option a
 
 list_witness: list a -> (a -> bool) -> option a
 list_witness nil _ = none
@@ -331,7 +331,8 @@ set_witness p (mkSet l) = (list_witness l p)
 -- set of all pairs whose first element is taken from s1 and whose
 -- second element is taken from s2. For example, the product of the
 -- sets {1, 2} and {a, b} is { (1, a), (1, b), (2, a), (2, b) }.
--- set_product: (s1: set a) -> (s2: set b) -> set (pair a b)
+--set_product: (s1: set a) -> (s2: set b) -> set (pair a b)
+
 one_element: a -> list b -> list (pair a b)
 one_element v nil = nil
 one_element v (h::t) = (mkPair v h)::(one_element v t)
